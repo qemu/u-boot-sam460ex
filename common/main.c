@@ -626,27 +626,6 @@ static char* hist_next(void)
 	return (ret);
 }
 
-#ifndef CONFIG_CMDLINE_EDITING
-static void cread_print_hist_list(void)
-{
-	int i;
-	unsigned long n;
-
-	n = hist_num - hist_max;
-
-	i = hist_add_idx + 1;
-	while (1) {
-		if (i > hist_max)
-			i = 0;
-		if (i == hist_add_idx)
-			break;
-		printf("%s\n", hist_list[i]);
-		n++;
-		i++;
-	}
-}
-#endif /* CONFIG_CMDLINE_EDITING */
-
 #define BEGINNING_OF_LINE() {			\
 	while (num) {				\
 		getcmd_putch(CTL_BACKSPACE);	\

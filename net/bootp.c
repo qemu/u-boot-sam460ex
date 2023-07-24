@@ -480,17 +480,6 @@ static int BootpExtended (u8 * e)
 	*e++ = 83;
 	*e++ = 99;
 
-#if defined(CONFIG_CMD_DHCP)
-	*e++ = 53;		/* DHCP Message Type */
-	*e++ = 1;
-	*e++ = DHCP_DISCOVER;
-
-	*e++ = 57;		/* Maximum DHCP Message Size */
-	*e++ = 2;
-	*e++ = (576 - 312 + OPT_SIZE) >> 16;
-	*e++ = (576 - 312 + OPT_SIZE) & 0xff;
-#endif
-
 #if defined(CONFIG_BOOTP_SUBNETMASK)
 	*e++ = 1;		/* Subnet mask request */
 	*e++ = 4;
